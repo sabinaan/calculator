@@ -1,0 +1,42 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    margin-left: 20px;
+}
+
+button{
+    border-radius: 5px;
+    border: 2px solid lightslategray;
+    font-size: 18px;
+    
+}
+div{
+    
+}
+
+#calculator-container{
+    display: grid;
+    margin: 20px;
+    max-width: 500px;
+
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-template-rows: 50px 50px 50px 50px 50px;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+#output{
+    border: 1px solid black;
+    border-radius: 5px;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    font-size: 25px;
+    text-align: end;
+    padding: 10px 20px 10px 10px;
+}
+
+
+
