@@ -27,7 +27,16 @@ equalButton.addEventListener('click', function(){
     inputValue = "";
 });
 
+clearButton.addEventListener('click', clearAll);
 
+
+function clearAll(){
+    inputValue = "";
+    storedValue = null;
+    operator = null;
+    outputDiv.textContent = "";
+
+}
 
 function add(a , b){
     return a + b;
