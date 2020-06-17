@@ -1,4 +1,5 @@
-let inputValue = "";
+let inputValue;
+let storedValue;
 let operator;
 
 const numberButtons = document.querySelectorAll(".number");
@@ -8,34 +9,58 @@ const clearButton = document.querySelector("#clear-btn");
 const outputDiv = document.querySelector("#output");
 
 numberButtons.forEach(button => button.addEventListener('click', function(e){ 
-    inputValue += e.target.value;
-    outputDiv.textContent = inputValue;
+    if (!inputValue){
+        inputValue = e.target.value.toString();
+    } else {
+        inputValue += e.target.value.toString();
+    }
+    display(inputValue);
  })
  );
 
+ //When pressing operator button
  operatorButtons.forEach(button => button.addEventListener('click', function(e){
+    if (!storedValue){
+        storedValue = inputValue;
+        inputValue = null;
+    }else if(inputValue){
+        calculateResult()
+    }
+        
     operator = e.target.value;
-    storedValue = inputValue;
-    inputValue = "";
 })
 );
-
+//When pressing the equal button calculate the result stor it in 
 equalButton.addEventListener('click', function(){
-    console.log(Number(storedValue), Number(inputValue), operator);
-    const result = operate(Number(storedValue), Number(inputValue), operator);
-    outputDiv.textContent = result;
-    inputValue = "";
+    if (!inputValue || !operator) {
+        display('ERROR - unfinished input');
+    }else{
+        calculateResult()
+    }
+    
 });
 
 clearButton.addEventListener('click', clearAll);
 
+function calculateResult(){
+    console.log(storedValue, operator, inputValue)
+    const result = operate(Number(storedValue), Number(inputValue), operator);
+    display(result);
+    storedValue = result;
+    inputValue = null;
+    operator = null;
+}
 
 function clearAll(){
-    inputValue = "";
+    inputValue = null;
     storedValue = null;
     operator = null;
-    outputDiv.textContent = "";
+    display("");
 
+}
+
+function display(thingToDisplay){
+    outputDiv.textContent = thingToDisplay;
 }
 
 function add(a , b){
