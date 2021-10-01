@@ -18,7 +18,7 @@ numberButtons.forEach(button => button.addEventListener('click', function(e){
  })
  );
 
- //When pressing operator button
+ 
  operatorButtons.forEach(button => button.addEventListener('click', function(e){
     if (!storedValue){
         storedValue = inputValue;
@@ -30,7 +30,8 @@ numberButtons.forEach(button => button.addEventListener('click', function(e){
     operator = e.target.value;
 })
 );
-//When pressing the equal button calculate the result stor it in 
+
+
 equalButton.addEventListener('click', function(){
     if (!inputValue || !operator) {
         display('ERROR - unfinished input');
